@@ -88,7 +88,7 @@ def reward_function(params):
 
     if steps:
         # speed_reward = (1 + (speed / max_speed)) ** 2
-        position_reward = (1 + (1 - math.tanh(best_position_diff))) ** 2
+        position_reward = (1 + (1 - math.tanh(best_position_diff * 3))) ** 2
         heading_reward = (1 + (1 - best_heading_diff / 360)) ** 2
         # reward *= (position_reward * heading_reward + speed_reward) ** 2
         reward *= (position_reward * heading_reward) ** 2
