@@ -9,8 +9,8 @@ mkdir -p docker/volumes/minio/bucket/custom_files \
 # https://docs.aws.amazon.com/cli/latest/userguide/install-linux-al2017.html
 ln -s $(eval echo "~${USER}")/.aws  docker/volumes/
 
-# grab local training deepracer repo from crr0004 and log analysis repo from vreadcentric
-git clone --recurse-submodules https://github.com/crr0004/deepracer.git
+# grab local training deepracer repo and log analysis repo from vreadcentric
+git clone --recurse-submodules https://github.com/ronald-d-rogers/deepracer.git
 
 git clone https://github.com/breadcentric/aws-deepracer-workshops.git && cd aws-deepracer-workshops && git checkout enhance-log-analysis && cd ..
 
@@ -33,7 +33,7 @@ do
     fi
 done
 
-# build rl-coach image with latest code from crr0004's repo
+# build rl-coach image with latest code from deepracer repo
 docker build ${args} -f ./docker/dockerfiles/rl_coach/Dockerfile -t aschu/rl_coach deepracer/
 
 # copy reward function and model-metadata files to bucket 
